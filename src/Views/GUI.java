@@ -1,5 +1,7 @@
 package Views;
 
 public interface GUI{
-	public void showGUI();
+	public void showGUI(){
+		
+	}
 }
