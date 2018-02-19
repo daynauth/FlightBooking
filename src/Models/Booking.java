@@ -1,16 +1,19 @@
 package Models;
-public class Booking{
+
+public class Booking extends FlightObservable{
 	private final int id;
 	private final Passenger passenger;
 	private Boolean checkedIn;
-	private LoginListener listener;
-	private BaggageFee baggagefee;
+	private BaggageFeeCalculator baggageFeeCalculator;
+	private double baggageFee;
 	
 	public Booking(int id, Passenger p, boolean checkedIn){
 		this.id = id;
 		this.passenger = p;
 		this.checkedIn = checkedIn;
-		this.baggagefee = new BaggageFee(0.2, 0.4);
+		this.baggageFeeCalculator = new BaggageFeeCalculator(0.2, 0.4);
+		
+		this.baggageFee = -1;
 	}
 	
 	public int getBookingId(){
@@ -21,14 +24,21 @@ public class Booking{
 		return checkedIn;
 	}
 	
-	public double getBaggageFee(){
+	public double calculateBaggageFee(){
 		double fee = 0;
 		
 		for(int i = 0; i < passenger.getNumBaggage(); i++){
-			fee += baggagefee.calculate(passenger.getBaggages().get(i));
+			fee += baggageFeeCalculator.calculate(passenger.getBaggages().get(i));
 		}
+				
 		
 		return fee;
+	}
+	
+	public double getBaggageFee(){
+		if(baggageFee == -1)
+			baggageFee = calculateBaggageFee();		
+		return baggageFee;
 	}
 	
 	public Passenger getPassenger(){
@@ -38,6 +48,9 @@ public class Booking{
 	public void checkIn(){
 		if(checkedIn != true){
 			checkedIn = true;
+			
+			
+			//notify the flight that a passenger has checked in
 			notifyListener();
 		}
 			
@@ -45,16 +58,5 @@ public class Booking{
 	
 	public Boolean login(int id, String lastName){
 		return(this.id == id && lastName == this.passenger.getLastName());		
-	}
-	
-	
-	public void addListener(LoginListener l){
-		listener = l;
-	}
-	
-	public void notifyListener(){
-		listener.updateCheckIn();
-	}
-	
-	
+	}	
 }

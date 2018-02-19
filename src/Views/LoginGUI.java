@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -17,7 +18,6 @@ public class LoginGUI extends JFrame{
 	private JPanel panel;
 	
 	public LoginGUI(){
-		//System.out.println("call from contstructor");
 		nameField = new JTextField(50);
 		bookingField = new JTextField(50);
 		nameLabel = new JLabel("Last Name");
@@ -33,8 +33,6 @@ public class LoginGUI extends JFrame{
 		panel.add(loginButton);
 		
 		this.setContentPane(panel);
-		
-		//System.out.println(loginButton.getText());
 	}
 	
 	public void createAndShowGUI(){
@@ -62,7 +60,15 @@ public class LoginGUI extends JFrame{
 		return nameField.getText();
 	}
 	
-	public int getBookingId(){
-		return Integer.parseInt(bookingField.getText());
+	public String getBookingId(){
+		return bookingField.getText();
+	}
+	
+	public void showError(String message){
+		JOptionPane.showMessageDialog(this, message);
+	}
+	
+	public JPanel getPanel(){
+		return this.panel;
 	}
 }

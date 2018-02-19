@@ -1,4 +1,4 @@
 package Models;
-public interface LoginListener {
+public interface FlightListener {
 	public void updateCheckIn();
 }
