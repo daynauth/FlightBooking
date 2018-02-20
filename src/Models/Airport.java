@@ -29,6 +29,9 @@ public class Airport implements FlightListener{
 		return flights.get(flightCode);
 	}
 	
+	public HashMap<String, Flight> getFlights(){
+		return flights;
+	}
 	
 	/**
 	 * 
@@ -41,7 +44,6 @@ public class Airport implements FlightListener{
 		
 		//keep a running count of all the bookings
 		count++;
-		System.out.println("count: "  + count);
 	}
 	
 	public int getCount(){
@@ -73,7 +75,7 @@ public class Airport implements FlightListener{
 			Booking b = flights.get(flightkey).getBooking(bookingId);
 			
 			//don't let checked in passengers sign in
-			if(b != null && b.getPassenger().getLastName().equals(lastName) && !b.isCheckedIn()){
+			if(b != null && b.getPassenger().getLastName().equals(lastName)){
 				booking = b;
 			}
 		}
@@ -87,5 +89,10 @@ public class Airport implements FlightListener{
 		if(count == 0)
 			this.fullyBooked = true;
 		
+	}
+	
+	public void generateReport(){
+		Report report = new Report(this);
+		report.generate();
 	}
 }

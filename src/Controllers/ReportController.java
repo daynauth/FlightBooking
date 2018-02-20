@@ -4,7 +4,7 @@ public class ReportController extends Controller {
 
 	public ReportController(MainController mainController) {
 		super(mainController);
-		// TODO Auto-generated constructor stub
+		mainController.getAirport().generateReport();
 	}
 
 	@Override

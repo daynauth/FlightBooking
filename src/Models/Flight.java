@@ -1,5 +1,4 @@
 package Models;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Flight extends FlightObservable implements FlightListener {
@@ -61,6 +60,10 @@ public class Flight extends FlightObservable implements FlightListener {
 	public int getMaxVolume() {
 		return maxVolume;
 	}
+	
+	public int getCount(){
+		return this.count;
+	}
 
 	public HashMap<Integer, Booking> getBookings() {
 		return bookings;
@@ -79,8 +82,39 @@ public class Flight extends FlightObservable implements FlightListener {
 		b.addListener(this);
 	}
 	
+	/**
+	 * get the total baggage weight of all passengers
+	 * @return double
+	 */
+	public double getTotalWeight(){
+		double sum = 0;
+		
+		for(int i = 0; i< bookings.size(); i++){
+			sum += bookings.get(i).getPassenger().getBaggageWeight();
+		}
+		
+		return sum;
+	}
+	
+	/**
+	 * get the total baggage volume of all passengers
+	 * @return double
+	 */
+	public double getTotalVolume(){
+		double sum = 0;
+		
+		for(int i = 0; i< bookings.size(); i++){
+			sum += bookings.get(i).getPassenger().getBaggageVolume();
+		}
+		
+		return sum;
+	}	
+	
+	/**
+	 * Get an update from the booking class whenever someone has checked in
+	 */
 	public void updateCheckIn(){
-		//count++;
+		count++;
 		
 		//if the number of checked it is equal to the 
 		//maxPassengers then the flight is full

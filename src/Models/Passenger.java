@@ -1,5 +1,6 @@
 package Models;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Passenger {
 	private final String lastName;
@@ -31,6 +32,34 @@ public class Passenger {
 	
 	public ArrayList<Baggage> getBaggages(){
 		return baggages;
+	}
+	
+	/**
+	 * Get the total baggage weight of a passenger
+	 * @return double
+	 */
+	public double getBaggageWeight(){
+		double sum = 0;
+
+		for(int i = 0; i < baggages.size(); i++){
+			sum += baggages.get(i).getWeight();
+		}
+		
+		return sum;
+	}
+	
+	/**
+	 * Get the total baggage volume of a passenger
+	 * @return
+	 */
+	public double getBaggageVolume(){
+		double sum = 0;
+
+		for(int i = 0; i < baggages.size(); i++){
+			sum += baggages.get(i).getVolume();
+		}
+		
+		return sum;	
 	}
 	
 	public String toString(){

@@ -80,4 +80,9 @@ public class LoginPanel extends JPanel implements CustomPanel{
 	public void showError(String message){
 		JOptionPane.showMessageDialog(this, message);
 	}
+	
+	public void clearInputs(){
+		nameField.setText("");
+		bookingField.setText("");
+	}
 }

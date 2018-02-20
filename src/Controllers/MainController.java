@@ -6,7 +6,7 @@ import Models.Airport;
 import Models.Booking;
 import Views.MainGUI;
 
-public class MainController{
+public class MainController{                                                                                                                                                     
 	private Controller currentController;
 	private Booking booking;
 	

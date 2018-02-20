@@ -15,7 +15,7 @@ public class App {
 		}*/
 		
 		
-		System.out.println("count: " + airport.getCount());
+		//System.out.println("count: " + airport.getCount());
 		
 		MainGUI gui = new MainGUI();
 		MainController controller = new MainController(airport, gui);

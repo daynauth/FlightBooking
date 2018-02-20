@@ -50,6 +50,9 @@ public class LoginController extends Controller{
 				
 				if(booking == null){
 					loginPanel.showError("Passenger not found");
+				}else if(booking.isCheckedIn()){
+					loginPanel.showError("You have already checked in");
+					loginPanel.clearInputs();
 				}
 				else{
 					mainController.setState(new BaggageController(mainController));
