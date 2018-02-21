@@ -13,7 +13,7 @@ public class Airport implements FlightListener{
 		flightIndex = new HashMap<>();
 		count = 0;
 		
-		CSVReader.loadFlights(this);
+		//CSVReader.loadFlights(this);
 		
 		fullyBooked = false;
 		

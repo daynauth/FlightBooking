@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -11,11 +13,23 @@ public class WelcomePanel extends JPanel{
 	private JButton button;
 	
 	public WelcomePanel(){
-		text = new JLabel("Welcome to the airport checkin system");
-		this.add(text);
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
 		
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.weightx = 1;
+		gc.weighty = 1;
+		gc.fill = GridBagConstraints.NONE;
+		
+		text = new JLabel("Welcome to the airport checkin system");
+		this.add(text, gc);
+		
+		
+		gc.gridx = 0;
+		gc.gridy = 1;
 		button = new JButton();
-		this.add(button);
+		this.add(button, gc);
 	}
 	
 	public void setButton(String text){

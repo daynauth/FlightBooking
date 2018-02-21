@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -10,19 +12,68 @@ public class LoginPanel extends JPanel implements CustomPanel{
 	private JLabel nameLabel;
 	private JLabel bookingLabel;
 	private JButton loginButton;
+	private JLabel intro;
 	
 	public LoginPanel(){
-		nameField = new JTextField(50);
-		bookingField = new JTextField(50);
-		nameLabel = new JLabel("Last Name");
-		bookingLabel = new JLabel("Booking Id");
-		loginButton = new JButton("Login");
+		this.setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
 		
-		this.add(nameLabel);
-		this.add(nameField);
-		this.add(bookingLabel);
-		this.add(bookingField);
-		this.add(loginButton);
+		gc.fill = GridBagConstraints.NONE;
+		
+		//First Row
+		gc.weightx = 1;
+		gc.weighty = 1;
+		
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.gridwidth = 2;
+		intro = new JLabel("Please enter your credentials");
+		this.add(intro, gc);
+		
+		//Second Row
+		gc.weightx = 1;
+		gc.weighty = 0.1;
+		
+		gc.gridy = 1;
+		gc.gridx = 0;
+		gc.gridwidth = 1;
+		bookingLabel = new JLabel("Booking Id");
+		gc.anchor = GridBagConstraints.LINE_END;
+		this.add(bookingLabel, gc);
+		
+		gc.gridy = 1;
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;
+		bookingField = new JTextField(20);
+		this.add(bookingField, gc);
+		
+		//Third Row
+		gc.weightx = 1;
+		gc.weighty = 1;
+		
+		gc.gridx = 0;
+		gc.gridy = 2;
+		nameLabel = new JLabel("Last Name");
+		gc.anchor = GridBagConstraints.LINE_END;
+		this.add(nameLabel, gc);
+		
+		gc.gridx = 1;
+		gc.gridy = 2;
+		gc.anchor = GridBagConstraints.LINE_START;
+		nameField = new JTextField(20);
+		this.add(nameField, gc);
+			
+		
+		//Fourth Row
+		gc.weightx = 1;
+		gc.weighty = 0.5;
+		
+		gc.gridx = 1;
+		gc.gridy = 3;
+		gc.anchor = GridBagConstraints.LINE_START;
+		loginButton = new JButton("Login");
+		this.add(loginButton, gc);
+	
 	}
 
 	public JTextField getNameField() {

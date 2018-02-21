@@ -1,5 +1,6 @@
 package Views;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -18,8 +19,15 @@ public class LoginGUI extends JFrame{
 	private JPanel panel;
 	
 	public LoginGUI(){
+		//this.setLayout(new BorderLayout());
+		
 		nameField = new JTextField(50);
 		bookingField = new JTextField(50);
+		
+		//Document bookingFieldOne = bookingField.getDocument();
+		//DocumentFilter filter = new IntegerRangeDocumentFilter(0, 99999);
+		//((AbstractDocument)bookingFieldOne).setDocumentFilter(filter);
+		
 		nameLabel = new JLabel("Last Name");
 		bookingLabel = new JLabel("Booking Id");
 		loginButton = new JButton("Login");
