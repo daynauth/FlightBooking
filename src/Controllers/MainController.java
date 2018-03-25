@@ -2,9 +2,9 @@ package Controllers;
 
 import java.awt.EventQueue;
 
-import Models.Airport;
-import Models.Booking;
-import Views.MainGUI;
+import models.Airport;
+import models.Booking;
+import views.MainGUI;
 
 public class MainController{                                                                                                                                                     
 	private Controller currentController;

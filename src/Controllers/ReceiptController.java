@@ -3,7 +3,7 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Views.ReceiptPanel;
+import views.ReceiptPanel;
 
 public class ReceiptController extends Controller {
 	private ReceiptPanel receiptPanel;

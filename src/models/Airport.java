@@ -1,6 +1,8 @@
-package Models;
+package models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Airport implements FlightListener{
 	private HashMap<String, Flight> flights;
@@ -11,10 +13,7 @@ public class Airport implements FlightListener{
 	public Airport(){
 		flights = new HashMap<>();
 		flightIndex = new HashMap<>();
-		count = 0;
-		
-		//CSVReader.loadFlights(this);
-		
+		count = 0;		
 		fullyBooked = false;
 		
 	}
@@ -33,6 +32,10 @@ public class Airport implements FlightListener{
 		return flights;
 	}
 	
+	public List<Flight> getFlightList(){
+		return new ArrayList<Flight>(flights.values());
+	}
+	
 	/**
 	 * 
 	 * @param flightCode
@@ -42,7 +45,6 @@ public class Airport implements FlightListener{
 		flights.get(flightCode).addBooking(b);
 		flightIndex.put(b.getBookingId(), flightCode);
 		
-		//keep a running count of all the bookings
 		count++;
 	}
 	
@@ -68,7 +70,7 @@ public class Airport implements FlightListener{
 	
 	public Booking login(int bookingId, String lastName){
 		String flightkey = flightIndex.get(bookingId);
-		//Passenger passenger = null;
+
 		Booking booking = null;
 		
 		if(flightkey != null){
@@ -91,8 +93,9 @@ public class Airport implements FlightListener{
 		
 	}
 	
-	public void generateReport(){
+	
+	public String generateReport(){
 		Report report = new Report(this);
-		report.generate();
+		return report.generate();
 	}
 }

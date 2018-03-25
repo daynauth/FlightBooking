@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Models.Booking;
-import Models.Passenger;
+import models.Booking;
+import models.Passenger;
 
 public class BaggagePanel extends JPanel{
 	private JLabel welcome;
@@ -63,11 +63,6 @@ public class BaggagePanel extends JPanel{
 		weight = new JTextField(20);
 		this.add(weight, gc);
 		
-//		gc.gridx = 2;
-//		gc.gridy = 1;
-//		weightError = new JLabel("An Integer should be entered here");
-//		weightError.setVisible(false);
-//		this.add(weightError, gc);
 		
 		//Third Row
 		gc.weightx = 1;
@@ -83,10 +78,6 @@ public class BaggagePanel extends JPanel{
 		height = new JTextField(20);
 		this.add(height, gc);
 		
-//		gc.gridx = 2;
-//		gc.gridy = 2;
-//		heightError = new JLabel("An Integer should be entered here");
-//		this.add(heightError, gc);
 		
 		//Fourth Row
 		gc.weightx = 1;
@@ -102,11 +93,6 @@ public class BaggagePanel extends JPanel{
 		width = new JTextField(20);
 		this.add(width, gc);
 		
-//		gc.gridx = 2;
-//		gc.gridy = 3;
-//		widthError = new JLabel("An Integer should be entered here");
-//		widthError.setVisible(false);
-//		this.add(widthError, gc);
 		
 		//Fifth Row
 		gc.weightx = 1;
@@ -122,11 +108,6 @@ public class BaggagePanel extends JPanel{
 		depth = new JTextField(20);
 		this.add(depth, gc);
 		
-//		gc.gridx = 2;
-//		gc.gridy = 4;
-//		depthError = new JLabel("An Integer should be entered here");
-//		depthError.setVisible(false);
-//		this.add(depthError, gc);
 		
 		//Sixth Row
 		gc.weightx = 1;
@@ -173,11 +154,6 @@ public class BaggagePanel extends JPanel{
 		depthError.setForeground(Color.RED);
 		this.add(depthError, gc);
 		
-		//gc2.gridx = 0;
-		//gc2.gridy = 2;
-		//depthError = new JLabel("An Integer should be entered here");
-		//depthError.setVisible(false);
-		//errorPanel.add(depthError, gc2);
 		
 		this.add(errorPanel, gc);
 		

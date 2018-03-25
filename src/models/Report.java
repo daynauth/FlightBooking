@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import java.util.HashMap;
 
@@ -9,11 +9,14 @@ public class Report {
 		this.airport = airport;
 	}
 	
-	public void generate(){
+	public String generate(){
+		String text = "";
 		HashMap<String, Flight> flights = airport.getFlights();
 		for(String key: flights.keySet()){
-			System.out.println(displayFlightRecord(flights.get(key)));
+			if(flights.get(key).getBookings().size() != 0);
+				text += displayFlightRecord(flights.get(key));
 		}
+		return text;
 	}
 	
 	private String displayFlightRecord(Flight flight){
@@ -22,7 +25,7 @@ public class Report {
 	}
 	
 	private String getFlightSummary(Flight flight){
-		if(flight != null) {
+		if(flight != null || flight.getBookings().size() != 0) {
 			return numCheckedIn(flight) + flightBaggageWeight(flight) + 
 					flightBaggageVolume(flight); 
 		}
@@ -38,7 +41,7 @@ public class Report {
 	}
 	
 	private String flightBaggageVolume(Flight flight){
-		return "Total Baggage Weight: " + flight.getTotalVolume() + "\n";
+		return "Total Baggage Volume: " + flight.getTotalVolume() + "\n";
 	}
 	
 	private String getDivider(){

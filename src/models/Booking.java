@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 public class Booking extends FlightObservable{
 	private final int id;
@@ -12,7 +12,6 @@ public class Booking extends FlightObservable{
 		this.passenger = p;
 		this.checkedIn = checkedIn;
 		this.baggageFeeCalculator = new BaggageFeeCalculator(0.2, 0.4);
-		
 		this.baggageFee = -1;
 	}
 	
@@ -24,15 +23,8 @@ public class Booking extends FlightObservable{
 		return checkedIn;
 	}
 	
-	public double calculateBaggageFee(){
-		double fee = 0;
-		
-		for(int i = 0; i < passenger.getNumBaggage(); i++){
-			fee += baggageFeeCalculator.calculate(passenger.getBaggages().get(i));
-		}
-				
-		
-		return fee;
+	public double calculateBaggageFee(){	
+		return this.baggageFeeCalculator.calculate(passenger.getBaggage());
 	}
 	
 	public double getBaggageFee(){
@@ -45,8 +37,37 @@ public class Booking extends FlightObservable{
 		return passenger;
 	}
 	
+	/**
+	 * Encapsulate the passenger's first name
+	 * @return String
+	 */
+	public String getPassengerFirstName() {
+		return passenger.getFirstName();
+	}
+	
+	/**
+	 * Encapsulate the passenger's last name
+	 * @return String
+	 */
+	public String getPassengerLastName() {
+		return passenger.getLastName();
+	}
+	
+	/**
+	 * Encapsulate the passenger's baggage weight
+	 * @return double
+	 */
+	public double getPassengerBaggageWeight() {
+		return passenger.getBaggageWeight();
+	}
+	
+	public double getVolume() {
+		if(this.checkedIn == false)return 0;
+		return passenger.getBaggageVolume();
+	}
+	
 	public void checkIn(){
-		if(checkedIn != true){
+		if(checkedIn == false){
 			checkedIn = true;
 			
 			
@@ -59,4 +80,8 @@ public class Booking extends FlightObservable{
 	public Boolean login(int id, String lastName){
 		return(this.id == id && lastName == this.passenger.getLastName());		
 	}	
+	
+	public String toString() {
+		return id + "  " + passenger.getFirstName() + "  " + passenger.getBaggageWeight() + "kg  " + passenger.getBaggageDimensions();
+	}
 }

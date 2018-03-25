@@ -1,4 +1,4 @@
-package Views;
+package views;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginPanel extends JPanel implements CustomPanel{
+public class LoginPanel extends KioskPanel{
 	private JTextField nameField;
 	private JTextField bookingField;
 	private JLabel nameLabel;

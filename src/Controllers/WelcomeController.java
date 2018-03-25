@@ -3,7 +3,7 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Views.WelcomePanel;
+import views.WelcomePanel;
 
 public class WelcomeController extends Controller{
 	private WelcomePanel welcomePanel;

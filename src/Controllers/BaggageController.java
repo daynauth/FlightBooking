@@ -3,8 +3,8 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Models.Baggage;
-import Views.BaggagePanel;
+import models.Baggage;
+import views.BaggagePanel;
 
 public class BaggageController extends Controller{
 	private BaggagePanel baggagePanel;
@@ -42,11 +42,13 @@ public class BaggageController extends Controller{
 				if(depth == -1)baggagePanel.getDepthError().setVisible(true);
 				else baggagePanel.getDepthError().setVisible(false);
 				baggagePanel.showError("Please fill all fields");
+			}else {
+				Baggage baggage = new Baggage(width, height,depth, weight);
+				mainController.getBooking().getPassenger().addBaggage(baggage);			
+				mainController.setState(new ReceiptController(mainController));
 			}
 			
-			//Baggage baggage = new Baggage(width, height,depth, weight);
-			//mainController.getBooking().getPassenger().addBaggage(baggage);			
-			//mainController.setState(new ReceiptController(mainController));			
+						
 		}
 		
 	}

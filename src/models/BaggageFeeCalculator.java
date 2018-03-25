@@ -1,4 +1,4 @@
-package Models;
+package models;
 public class BaggageFeeCalculator {
 	private double ratePerKg;
 	private double ratePerM2;
@@ -9,7 +9,6 @@ public class BaggageFeeCalculator {
 	}
 	
 	public double calculate(Baggage b){
-		double rate;
 		double weightFee = 0;
 		double volumeFee = 0;
 		

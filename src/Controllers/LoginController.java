@@ -3,27 +3,21 @@ package Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Models.Booking;
-import Models.Passenger;
-import Views.CustomPanel;
-import Views.ReceiptPanel;
-import Views.LoginPanel;
+import models.Booking;
+import models.Passenger;
+import views.CustomPanel;
+import views.LoginPanel;
+import views.ReceiptPanel;
 
 public class LoginController extends Controller{
 	
 	private LoginPanel loginPanel;
-	
-	private ReceiptPanel feePanel;
-	private Passenger passenger;
 	private Booking booking;
-	//private MainController mainController;
 	
 	public LoginController(MainController mainController) {
 		super(mainController);
 
 		loginPanel = new LoginPanel();
-		loginPanel.getNameField().setText("Wayne");
-		loginPanel.getBookingField().setText("20");
 		loginPanel.submitActionListener(new SubmitAction());
 	}
 	
@@ -48,17 +42,15 @@ public class LoginController extends Controller{
 				booking = mainController.getAirport().login(Integer.parseInt(loginPanel.getBookingId()), loginPanel.getLastName());
 				mainController.addBooking(booking);
 				
-				if(booking == null){
+				if(booking == null)
 					loginPanel.showError("Passenger not found");
-				}else if(booking.isCheckedIn()){
+				else if(booking.isCheckedIn()){
 					loginPanel.showError("You have already checked in");
 					loginPanel.clearInputs();
 				}
-				else{
+				else
 					mainController.setState(new BaggageController(mainController));
-				}
 			}
-			
 		}
 	}
 }

@@ -1,5 +1,7 @@
-package Models;
+package models;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Flight extends FlightObservable implements FlightListener {
 	private final String id;
@@ -10,9 +12,13 @@ public class Flight extends FlightObservable implements FlightListener {
 	private final int maxVolume;
 	
 	private HashMap<Integer, Booking> bookings;
-	private FlightListener listener;
+	
+	//binding a view to the changes made on the airport
+	private List<ViewChangeListener> viewListeners = new ArrayList<>();
+	
 	private int count;
 	private boolean full;
+	private String status;
 	
 	
 	
@@ -25,6 +31,7 @@ public class Flight extends FlightObservable implements FlightListener {
 			int maxVolume){
 		
 		this.bookings = new HashMap<>();
+		
 		
 		this.destination = destination;
 		this.id = id;
@@ -64,7 +71,7 @@ public class Flight extends FlightObservable implements FlightListener {
 	public int getCount(){
 		return this.count;
 	}
-
+	
 	public HashMap<Integer, Booking> getBookings() {
 		return bookings;
 	}
@@ -89,9 +96,10 @@ public class Flight extends FlightObservable implements FlightListener {
 	public double getTotalWeight(){
 		double sum = 0;
 		
-		for(int i = 0; i< bookings.size(); i++){
-			sum += bookings.get(i).getPassenger().getBaggageWeight();
+		for(Integer key: bookings.keySet()){
+			sum += bookings.get(key).getPassenger().getBaggageWeight();
 		}
+		
 		
 		return sum;
 	}
@@ -103,8 +111,8 @@ public class Flight extends FlightObservable implements FlightListener {
 	public double getTotalVolume(){
 		double sum = 0;
 		
-		for(int i = 0; i< bookings.size(); i++){
-			sum += bookings.get(i).getPassenger().getBaggageVolume();
+		for(Integer key: bookings.keySet()){
+			sum += bookings.get(key).getVolume();
 		}
 		
 		return sum;
@@ -115,17 +123,34 @@ public class Flight extends FlightObservable implements FlightListener {
 	 */
 	public void updateCheckIn(){
 		count++;
+		notifyListener();
 		
-		//if the number of checked it is equal to the 
-		//maxPassengers then the flight is full
-		//if(count == maxPassengers || count == bookings.size())
-		
-		//notify the airport that a passenger have been booked
-		notifyListener();	
+		viewListeners.forEach(e -> e.update(getStatus()));
 	}
 	
 	
 	public String toString(){
 		return "Flight Code: " + id;
+	}
+	
+	public String getStatus() {
+		return getInfo() + getCheckedInStatus() + getVolumeStatus();
+	}
+	
+	public String getInfo() {
+		return "<strong>" + id + " " + carrier +  "</strong>" +  "<br>";
+	}
+	
+	public String getCheckedInStatus() {
+		return this.count + " checked in of " + this.maxPassengers + "<br>";
+	}
+	
+	public String getVolumeStatus() {
+		String percentage = String.format("%.2f", (this.getTotalVolume()/this.getMaxVolume())*100);
+		return "Hold is " + percentage + "% full <br>";
+	}
+	
+	public void addChangeListener(ViewChangeListener v) {
+		this.viewListeners.add(v);
 	}
 }
