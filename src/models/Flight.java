@@ -99,8 +99,6 @@ public class Flight extends FlightObservable implements FlightListener {
 		for(Integer key: bookings.keySet()){
 			sum += bookings.get(key).getPassenger().getBaggageWeight();
 		}
-		
-		
 		return sum;
 	}
 	
@@ -124,7 +122,6 @@ public class Flight extends FlightObservable implements FlightListener {
 	public void updateCheckIn(){
 		count++;
 		notifyListener();
-		
 		viewListeners.forEach(e -> e.update(getStatus()));
 	}
 	
@@ -152,5 +149,9 @@ public class Flight extends FlightObservable implements FlightListener {
 	
 	public void addChangeListener(ViewChangeListener v) {
 		this.viewListeners.add(v);
+	}
+	
+	public int getNumPassengers() {
+		return bookings.size();
 	}
 }

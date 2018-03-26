@@ -36,6 +36,10 @@ public class Airport implements FlightListener{
 		return new ArrayList<Flight>(flights.values());
 	}
 	
+	public int getNumPassengers() {
+		return flights.values().stream().mapToInt(e -> e.getNumPassengers()).sum();
+	}
+	
 	/**
 	 * 
 	 * @param flightCode

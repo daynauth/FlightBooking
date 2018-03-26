@@ -32,7 +32,8 @@ public class TaskLogger {
 		try(BufferedWriter writer = Files.newBufferedWriter(Paths.get(file))){
 			log.forEach(e -> {
 				try {
-					writer.write(e);
+					writer.append(e);
+					//writer.write(e);
 					writer.newLine();
 				} catch (IOException e1) {
 					e1.printStackTrace();

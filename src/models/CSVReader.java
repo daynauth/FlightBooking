@@ -47,7 +47,6 @@ public class CSVReader {
 					try {
 						throw new FlightIntegerException("MAx Weight must be a number");
 					} catch (FlightIntegerException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				
