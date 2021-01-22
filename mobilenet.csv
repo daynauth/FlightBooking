@@ -1,0 +1,6 @@
+Model,Median,Power
+GPU-Mobilenet,13.01848888,230
+Jetson-Nano-Mobilenet,106.0293913,5
+Jetson-Nx-Mobilenet,56.38468266,10
+Jetson-AGX-MobileNet(15W),45.01974583,15
+Jetson-AGX-MobileNet(30W),45.01974583,30
