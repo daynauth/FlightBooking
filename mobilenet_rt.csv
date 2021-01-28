@@ -1,0 +1,7 @@
+Model,Median,Power
+Jetson-Nano-Mobilenet-rt,95.71635723,5
+Jetson-Nano-Mobilenet,106.0293913,5
+Jetson-Nx-Mobilenet-rt,55.83095551,10
+Jetson-Nx-Mobilenet,56.38468266,10
+Jetson-AGX-MobileNet-rt,24.24383163,15
+Jetson-AGX-MobileNet,45.01974583,15
