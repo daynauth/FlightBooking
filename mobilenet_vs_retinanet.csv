@@ -1,0 +1,5 @@
+Hardware,Retinanet,MobileNet
+GPU,0.12263,0.08039
+Jetson AGX,0.56831,0.201613
+Jetson Nx,0.8067,0.38075
+Jetson Nano,1.9749,0.5981
